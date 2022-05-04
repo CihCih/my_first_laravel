@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main .banner {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/img/login-page/1920x1080.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+main .banner #section1 {
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  main .banner #section1 {
+    display: none;
+  }
+}
+main .banner #section1 .left-box {
+  width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.6);
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 5%;
+}
+main .banner #section1 .left-box h3 {
+  height: 50px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 3rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+main .banner #section1 .left-box h5 {
+  color: white;
+  padding-top: 5px;
+  padding-right: 10%;
+  font-size: 1.8rem;
+}
+main .banner #section2 {
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  main .banner #section2 {
+    width: 100%;
+  }
+}
+main .banner #section2 .right-box {
+  width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  background-color: #162446;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+@media (max-width: 1024px) {
+  main .banner #section2 .right-box {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+main .banner #section2 .right-box .logo-box {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+main .banner #section2 .right-box .logo-box .logo {
+  width: 65px;
+  height: 65px;
+  margin-right: 15px;
+}
+main .banner #section2 .right-box .logo-box .logo img {
+  width: 100%;
+  height: 100%;
+}
+main .banner #section2 .right-box .logo-box h3 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+main .banner #section2 .right-box .svg-box {
+  align-items: center;
+  justify-content: center;
+}
+main .banner #section2 .right-box .svg-box .box-top {
+  width: 200px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+main .banner #section2 .right-box .svg-box .box-top .box1 {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid white;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 15px;
+}
+main .banner #section2 .right-box .svg-box .box-top .box2 {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid white;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 15px;
+}
+main .banner #section2 .right-box .svg-box .box-top .box3 {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid white;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+main .banner #section2 .right-box .box-bot {
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+main .banner #section2 .right-box .login-form form {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-color: #162446;
+}
+@media (max-width: 1024px) {
+  main .banner #section2 .right-box .login-form form {
+    background-color: transparent;
+  }
+}
+main .banner #section2 .right-box .login-form form .mb-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+main .banner #section2 .right-box .login-form form .mb-3 input {
+  height: 60px;
+  border-radius: 0px;
+  background-color: black;
+  border: 0;
+  width: 60%;
+}
+@media (max-width: 639px) {
+  main .banner #section2 .right-box .login-form form .mb-3 input {
+    width: 95%;
+  }
+}
+main .banner #section2 .right-box .login-form form .mb-3 .form-control:focus {
+  box-shadow: 0 0 0 0.25rem white;
+}
+main .banner #section2 .right-box .login-form form .form-text {
+  width: 100%;
+  padding-right: 20%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  font-size: 1rem;
+}
+@media (max-width: 1024px) {
+  main .banner #section2 .right-box .login-form form .form-text {
+    color: #959ba6;
+  }
+}
+@media (max-width: 639px) {
+  main .banner #section2 .right-box .login-form form .form-text {
+    width: 95%;
+    padding-right: 0px;
+  }
+}
+main .banner #section2 .right-box .login-form form .form-text:hover {
+  text-decoration: underline;
+}
+main .banner #section2 .right-box .login-form form .btn {
+  height: 60px;
+  width: 55%;
+  border-radius: 30px;
+  margin-top: 15px;
+  background-color: #6366f1;
+  border: 0;
+  font-size: 1.2rem;
+}
+@media (max-width: 639px) {
+  main .banner #section2 .right-box .login-form form .btn {
+    width: 95%;
+  }
+}
+main .banner #section3 .svg-link {
+  position: absolute;
+  display: flex;
+  width: 100px;
+  top: 99%;
+  left: 25%;
+  transform: translate(-100%, -100%);
+}
+main .banner #section3 .svg-link .link1,
+main .banner #section3 .svg-link .link2,
+main .banner #section3 .svg-link .link3 {
+  height: 50px;
+}
+main .banner #section3 .svg-link img {
+  width: 50px;
+  height: 50px;
+}
+@media (max-width: 1024px) {
+  main .banner #section3 .svg-link {
+    top: 85%;
+    left: 47.5%;
+    transform: translate(-50%, -100%);
+  }
+}/*# sourceMappingURL=login.css.map */

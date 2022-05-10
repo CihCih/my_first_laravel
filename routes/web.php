@@ -29,11 +29,11 @@ Route::get('/', [Controller::class, 'index']);
 //microsoft
 Route::get('/microsoft', [NEWSController::class, 'index']);
 
-//bootstrap
-// Route::get('/bootstrap', [ShoppingCarController::class, 'index']);
-// Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
-// Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
-// Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
-// Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
+// bootstrap
+Route::get('/bootstrap', [ShoppingCarController::class, 'index']);
+Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
+Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
+Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
+Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
 
-// Route::get('/login', [Controller::class, 'login']);
+Route::get('/login', [Controller::class, 'login']);

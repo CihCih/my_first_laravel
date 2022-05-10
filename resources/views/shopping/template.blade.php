@@ -36,7 +36,7 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="user-icon nav-link "  href="#">

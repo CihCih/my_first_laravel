@@ -1,4 +1,4 @@
-@extends('shopping.template')
+@extends('template.template')
 
 @section('pageTitle')
     Document
@@ -42,6 +42,18 @@
             object-fit: cover;
         }
 
+        .no-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgb(3, 7, 43);
+            color: #fff;
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 @endsection
 
@@ -50,7 +62,7 @@
     <div id="section1" class="mb-2">
         <div class="swiper mySwiper container-fluid ">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{asset('img/homepage-img/swiper-silde1.jpg')}}" alt="">
+                <div class="swiper-slide"><img src="{{ asset('img/homepage-img/swiper-silde1.jpg') }}" alt="">
                 </div>
                 <div class="swiper-slide"><img src="{{ asset('img/homepage-img/swiper-silde2.jpg') }}" alt="">
                 </div>
@@ -81,45 +93,42 @@
                 <!-- 商品頁面卡片 -->
                 <div class="goods-card">
                     <div class="card-group ">
-                        <div class="card text-center ">
-                            <img src="{{ asset('img/homepage-img/section2-img.jpg') }}" class="card-img-top"
-                                alt="img-here">
-                            <div class="card-body ">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a
-                                    natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <span class="card-text"><small class="text-muted">Learn
-                                        More</small></span><i class="fa-solid fa-arrow-right"></i>
+
+                        {{-- @foreach ($newses as $news)
+                            <div class="card text-center ">
+                                <img src="
+                                    @if ($news->img == '' || $news->img == null)
+                                        {{ asset('/img/productimg3.webp') }}
+                                    @else
+                                        {{ $news->img }}
+                                    @endif"
+                                    class="card-img-top" alt="img-here">
+                                <div class="card-body ">
+                                    <h5 class="card-title">{{ $news->title }}</h5>
+                                    <p class="card-text">{{ $news->content }}</p>
+                                    <span class="card-text"><small class="text-muted">Learn
+                                            More</small></span><i class="fa-solid fa-arrow-right"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card text-center">
-                            <img src="{{ asset('img/homepage-img/section2-img.jpg') }}" class="card-img-top"
-                                alt="img-here">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Blue bottle crucifix vinyl post-ironic four dollar toast
-                                    vegan
-                                    taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS
-                                    try-hard.</p>
-                                <span class="card-text"><small class="text-muted">Learn
-                                        More</small></span><i class="fa-solid fa-arrow-right"></i>
+                        @endforeach --}}
+
+
+                        @foreach ($newses as $news)
+                            <div class="card text-center ">
+                                @if ($news->img == '' || $news->img == null)
+                                {{-- 取得標題的字首,中文的話要加mb_和'utf-8' --}}
+                                    <div class="no-img">{{ mb_substr($news->title, 0, 1, 'utf-8') }}</div>
+                                @else
+                                    <img src="{{ $news->img }}" class="card-img-top" alt="img-here">
+                                @endif
+                                    <div class="card-body ">
+                                        <h5 class="card-title">{{ $news->title }}</h5>
+                                        <p class="card-text">{{ $news->content }}</p>
+                                        <span class="card-text"><small class="text-muted">Learn
+                                                More</small></span><i class="fa-solid fa-arrow-right"></i>
+                                    </div>
                             </div>
-                        </div>
-                        <div class="card text-center">
-                            <img src="{{ asset('img/homepage-img/section2-img.jpg') }}" class="card-img-top"
-                                alt="img-here">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a
-                                    natural
-                                    lead-in to additional content. This card has even longer content than the first
-                                    to
-                                    show that equal height action.</p>
-                                <span class="card-text"><small class="text-muted">Learn
-                                        More</small></span><i class="fa-solid fa-arrow-right"></i>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- 商品頁面按鈕 -->
@@ -525,8 +534,8 @@
                         <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea"
                             required></textarea>
                         <!-- <div class="invalid-feedback">
-                                    Please enter a message in the textarea.
-                                </div> -->
+                                                Please enter a message in the textarea.
+                                            </div> -->
                     </div>
                 </form>
             </div>

@@ -1,4 +1,4 @@
-@extends('shopping.template')
+@extends('template.template')
 
 @section('pageTitle')
         訂單第四頁

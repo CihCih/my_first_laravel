@@ -30,7 +30,6 @@ Route::get('/', [Controller::class, 'index']);
 Route::get('/microsoft', [NEWSController::class, 'index']);
 
 // bootstrap
-Route::get('/bootstrap', [ShoppingCarController::class, 'index']);
 Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
 Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
 Route::get('/shopping3', [ShoppingCarController::class, 'step03']);

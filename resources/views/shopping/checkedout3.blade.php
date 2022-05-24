@@ -4,7 +4,7 @@
         訂單第三頁
 @endsection
 
-@section('pageTitle')
+@section('css')
 <link rel="stylesheet" href="{{asset('css/checkedout3.css')}}">
 @endsection
 

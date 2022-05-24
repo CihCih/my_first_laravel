@@ -18,6 +18,10 @@ use App\Http\Controllers\ShoppingCarController;
 
 Route::get('/', [Controller::class, 'index']);
 
+Route::get('/comment', [Controller::class, 'comment']);
+Route::get('/comment/save', [Controller::class, 'save_comment']);
+
+
 // Route::get('/test', function () {
 //     return view('welcome');
 // });

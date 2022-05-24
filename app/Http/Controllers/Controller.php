@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -22,7 +24,11 @@ class Controller extends BaseController
         return view('index',compact('newses'));
     }
 
-    // public function login(){
-    //     return view('shopping.login');
-    // }
+    public function comment(){
+        return view('comment.comment');
+    }
+
+    public function save_comment(Request $request){
+        dd($request -> all());
+    }
 }

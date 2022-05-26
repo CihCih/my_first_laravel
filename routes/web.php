@@ -20,6 +20,8 @@ Route::get('/', [Controller::class, 'index']);
 
 Route::get('/comment', [Controller::class, 'comment']);
 Route::get('/comment/save', [Controller::class, 'save_comment']);
+Route::get('/comment/delete/{target}', [Controller::class, 'delete_comment']);
+Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
 
 
 // Route::get('/test', function () {

@@ -40,7 +40,7 @@ class Controller extends BaseController
             'title' => $request->title,
             'name' => $request->name,
             'context' => $request->content,
-            'email' => ''
+            'email' => '',
 
         ]);
         return redirect('/comment');
@@ -51,6 +51,27 @@ class Controller extends BaseController
 
         return redirect('/comment'); //重新導向 與view不同
     }
+
+
+
     public function edit_comment($id){
+    //    $comment = DB::table('comments')->where('id', $id)->get();
+    //    $comment = DB::table('comments')->where('id', $id)->first(); //從符合條件的筆數中，抓第一筆(結果是單筆所以不會是陣列)
+       $comment =  DB::table('comments')->find($id); //直接去找match的ID
+        //   dd($comment);
+
+        return view('comment.edit',compact('comment'));
+    }
+    public function update_comment($id, Request $request){
+        // dd($id, $request->all());
+        //DB操作 注意只能用where
+        DB::table('comments')->where('id', $id)->update([
+            'title' => $request->title,
+            'name' => $request->name,
+            'context' => $request->content,
+            'email' => '',
+        ]);
+        return redirect('/comment'); //重新導向 與view不同
+
     }
 }

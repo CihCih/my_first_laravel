@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class Controller extends BaseController
 {
@@ -25,9 +26,13 @@ class Controller extends BaseController
         return view('index', compact('newses'));
     }
 
-    public function comment()
+    public function comment() //這段comment功能的目的是為了抓取資料庫所有的留言回傳給頁面
     {
-        $comments = DB::table('comments')->orderBy('id', 'desc')->get();
+        //以下這行使用orderby將最新的排序到最前面後，取出所有資料
+        // $comments = DB::table('comments')->orderby('id', 'desc')->get();  //DB直接存取
+
+        $comments = Comment::orderby('id', 'desc')->get(); //使用model抓資料
+        // dd($comments);
 
         return view('comment.comment', compact('comments'));
     }
@@ -36,18 +41,27 @@ class Controller extends BaseController
     {
         // dd($request -> all());
 
-        DB::table('comments')->insert([
+        //DB直接操作
+        // DB::table('comments')->insert([
+        //     'title' => $request->title,
+        //     'name' => $request->name,
+        //     'context' => $request->content,
+        //     'email' => '',
+        // ]);
+
+        Comment::create([
             'title' => $request->title,
             'name' => $request->name,
             'context' => $request->content,
             'email' => '',
-
         ]);
+
         return redirect('/comment');
     }
     public function delete_comment($target){
         // dd($target);
-       DB::table('comments')->where('id', $target)->delete();
+    //    DB::table('comments')->where('id', $target)->delete();
+       Comment::where('id', $target)->delete();
 
         return redirect('/comment'); //重新導向 與view不同
     }
@@ -57,15 +71,17 @@ class Controller extends BaseController
     public function edit_comment($id){
     //    $comment = DB::table('comments')->where('id', $id)->get();
     //    $comment = DB::table('comments')->where('id', $id)->first(); //從符合條件的筆數中，抓第一筆(結果是單筆所以不會是陣列)
-       $comment =  DB::table('comments')->find($id); //直接去找match的ID
-        //   dd($comment);
+    //    $comment =  DB::table('comments')->find($id); //直接去找match的ID
+       $comment =  Comment::find($id); //直接去找match的ID
+       //   dd($comment);
 
         return view('comment.edit',compact('comment'));
     }
     public function update_comment($id, Request $request){
         // dd($id, $request->all());
         //DB操作 注意只能用where
-        DB::table('comments')->where('id', $id)->update([
+        // DB::table('comments')->where('id', $id)->update([
+            Comment::where('id', $id)->update([
             'title' => $request->title,
             'name' => $request->name,
             'context' => $request->content,

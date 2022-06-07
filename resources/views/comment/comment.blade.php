@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="article-top-right">
                                     <div class="article-time">發文時間：</div>
-                                    <div class="time-box">{{ $comment->created_at}}</div>
+                                    <div class="time-box">{{substr($comment->created_at,5,2).'月'.substr($comment->created_at,8,2).'日' }}</div>
                                 </div>
                             </div>
                             <div class="article-bot">

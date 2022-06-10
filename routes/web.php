@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NEWSController;
 use App\Http\Controllers\ShoppingCarController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,30 @@ Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
 Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
 
 Route::get('/login', [Controller::class, 'login']);
+
+// BANNER管理相關頁面    手工建立版本(遵照resful API的規定)
+// Route::get('/banner', [BannerController::class, 'index']); //總表，列表頁
+// Route::post('/banner', [BannerController::class, 'store']); //儲存
+// Route::get('/banner/create', [BannerController::class, 'create']); //新增頁
+// Route::get('/banner/{id}', [BannerController::class, 'show']); //單筆檢視頁
+// Route::post('/banner/{id}', [BannerController::class, 'edit']); //編輯頁
+// Route::patch('/banner/{id}', [BannerController::class, 'update']); //更新
+// Route::delete('/banner/{id}', [BannerController::class, 'destroy']); //刪除
+
+// 以下一行抵七行
+// Route::resource('banner', BannerController::class);
+
+
+
+// 部分參考resful API個人習慣的寫法
+Route::prefix('/banner')->group(function (){  //BANNER管理相關路由
+
+    Route::get('/', [BannerController::class, 'index']); //總表，列表頁
+    Route::get('/create', [BannerController::class, 'create']); //新增頁
+    Route::post('/store', [BannerController::class, 'store']); //儲存
+    Route::get('/edit{id}', [BannerController::class, 'edit']); //編輯頁
+    Route::post('/update{id}', [BannerController::class, 'update']); //更新
+    Route::post('/delete{id}', [BannerController::class, 'delete']); //刪除
+
+});
+

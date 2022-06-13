@@ -46,36 +46,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $banners as $banner )
                         <tr>
                             <td class="img-column">
-                                <img src="{{asset('img/homework-img/500x300.png')}}" alt="" class="banner-img">
+                                <img src="{{$banner->img_path}}" alt="" class="banner-img" style="opacity: {{$banner->img_opacity}}">
                             </td>
-                            <td>1</td>
+                            <td>{{$banner->weight}}</td>
                             <td>
-                                <button class="btn btn-success">編輯</button>
+                                <button class="btn btn-success" onclick="location.href='/banner/edit{{$banner->id}}'">編輯</button>
                                 <button class="btn btn-danger">刪除</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <img src="" alt="" class="banner-img">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-success">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="" alt="" class="banner-img">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-success">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

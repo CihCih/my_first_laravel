@@ -48,7 +48,7 @@
                     <form class="d-flex flex-column" action="/banner/update{{$banner->id}}" method="post" enctype="multipart/form-data">
                         {{-- 需跟route對應 --}}
                         @csrf
-                        <span>圖片</span>
+                        <span>現在的圖片</span>
                         <img class="picture" src="{{ $banner->img_path }}" alt="">
                         <label for="banner_img">BANNER圖片上傳</label>
                         <input type="file" name="banner_img" id="banner_img">
@@ -60,7 +60,7 @@
                         <input type="numver" name="weight" id="weight" value="{{ $banner->weight }}">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset">取消</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/banner'">取消</button>
                             <button class="btn btn-primary" type="submit">修改banner</button>
                         </div>
                     </form>

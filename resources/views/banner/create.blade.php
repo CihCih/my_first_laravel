@@ -51,7 +51,7 @@
                         <input type="numver" name="weight" id="weight">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset">取消</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/banner'">取消</button>
                             <button class="btn btn-primary" type="submit">新增banner</button>
                         </div>
                     </form>

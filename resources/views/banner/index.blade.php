@@ -25,6 +25,9 @@
             width: 250px ;
             height: 200px;
         }
+        table.dataTable tbody td{
+            width: 300px;
+        }
     </style>
 @endsection
 
@@ -54,7 +57,10 @@
                             <td>{{$banner->weight}}</td>
                             <td>
                                 <button class="btn btn-success" onclick="location.href='/banner/edit{{$banner->id}}'">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
+                                <button class="btn btn-danger" onclick="document.querySelector('#deleteForm{{$banner->id}}').submit()">刪除</button>
+                                <form action="/banner/delete{{$banner->id}}" method="post" hidden id="deleteForm{{$banner->id}}">
+                                    @csrf
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -75,5 +81,9 @@
         $(document).ready(function() {
             $('#banner_list').DataTable();
         });
+
+        // function delete_banner($id) {
+        //     document.querySelector('#deleteForm'+$id).submit();
+        // }
     </script>
 @endsection

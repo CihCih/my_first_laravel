@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('pageTitle')
-    Banner新增
+    商品管理-編輯頁
 @endsection
 
 @section('css')
@@ -17,20 +17,6 @@
             height: 200px;
             width: 250px;
         }
-
-        /*
-            .shop-car h3{
-                float: left;
-            }
-
-            .create-banner{
-                float: right;
-            }
-
-            main .sorting_1 .banner-img{
-                width: 250px ;
-                height: 200px;
-            } */
     </style>
 @endsection
 
@@ -40,28 +26,34 @@
             <div id="section1" class="container-xxl">
                 <!-- 留言板標題 -->
                 <div class="shop-car">
-                    <h3>BANNER修改</h3>
+                    <h3>商品管理-編輯頁</h3>
                 </div>
             </div>
             <div id="section2">
                 <div class="content">
-                    <form class="d-flex flex-column" action="/banner/update{{$banner->id}}" method="post" enctype="multipart/form-data">
+                    <form class="d-flex flex-column" action="" method="post" enctype="multipart/form-data">
                         {{-- 需跟route對應 --}}
                         @csrf
                         <span>現在的圖片</span>
-                        <img class="picture" src="{{ $banner->img_path }}" alt="">
-                        <label for="banner_img">BANNER圖片上傳</label>
-                        <input type="file" name="banner_img" id="banner_img">
+                        <img class="picture" src="" alt="">
+                        <label for="product_img">商品圖片上傳</label>
+                        <input type="file" name="product_img" id="product_img">
 
-                        <label for="img_opacity">透明度設定</label>
-                        <input type="text" name="img_opacity" id="img_opacity" value="{{ $banner->img_opacity }}">
+                        <label for="product_name">商品名稱</label>
+                        <input type="text" name="product_name" id="product_name" value="">
 
-                        <label for="weight">權重設定</label>
-                        <input type="number" name="weight" id="weight" value="{{ $banner->weight }}">
+                        <label for="price">商品價格</label>
+                        <input type="number" name="price" id="price" value="">
+
+                        <label for="quantity">商品數量</label>
+                        <input type="number" name="quantity" id="quantity">
+
+                        <label for="introduce">商品介紹</label>
+                        <input type="text" name="introduce" id="introduce" value="">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/banner'">取消</button>
-                            <button class="btn btn-primary" type="submit">修改banner</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href=''">取消</button>
+                            <button class="btn btn-primary" type="submit">編輯商品</button>
                         </div>
                     </form>
                 </div>

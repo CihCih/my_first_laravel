@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('pageTitle')
-    Banner新增
+    商品管理-新增頁
 @endsection
 
 @section('css')
@@ -12,19 +12,6 @@
         main .banner{
             padding: 3% 15%;
         }
-/*
-        .shop-car h3{
-            float: left;
-        }
-
-        .create-banner{
-            float: right;
-        }
-
-        main .sorting_1 .banner-img{
-            width: 250px ;
-            height: 200px;
-        } */
     </style>
 @endsection
 
@@ -34,25 +21,31 @@
             <div id="section1" class="container-xxl">
                 <!-- 留言板標題 -->
                 <div class="shop-car">
-                    <h3>BANNER新增</h3>
+                    <h3>商品管理-新增頁</h3>
                 </div>
             </div>
             <div id="section2">
                 <div class="content">
-                    <form class="d-flex flex-column" action="/banner/store" method="post" enctype="multipart/form-data"> {{-- 需跟route對應 --}}
+                    <form class="d-flex flex-column" action="" method="post" enctype="multipart/form-data"> {{-- 需跟route對應 --}}
                         @csrf
-                        <label for="banner_img">BANNER圖片上傳</label>
-                        <input type="file" name="banner_img" id="banner_img">
+                        <label for="product_img">商品圖片上傳</label>
+                        <input type="file" name="product_img" id="product_img">
 
-                        <label for="img_opacity">透明度設定</label>
-                        <input type="text" name="img_opacity" id="img_opacity">
+                        <label for="product_name">商品名稱</label>
+                        <input type="text" name="product_name" id="product_name">
 
-                        <label for="weight">權重設定</label>
-                        <input type="number" name="weight" id="weight">
+                        <label for="price">商品價格</label>
+                        <input type="number" name="price" id="price">
+
+                        <label for="quantity">商品數量</label>
+                        <input type="number" name="quantity" id="quantity">
+
+                        <label for="introduce">商品介紹</label>
+                        <input type="text" name="introduce" id="introduce">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/banner'">取消</button>
-                            <button class="btn btn-primary" type="submit">新增banner</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href=''">取消</button>
+                            <button class="btn btn-primary" type="submit">新增商品</button>
                         </div>
                     </form>
                 </div>

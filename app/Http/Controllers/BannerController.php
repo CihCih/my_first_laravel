@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Banner;
+use App\Http\Controllers\FilesController;
 
 class BannerController extends Controller
 {
@@ -29,12 +30,14 @@ class BannerController extends Controller
     {
         // dd($request->all());
         //將使用者填寫的資料,經過處理(Ex:檔案上傳/防呆...)後，新增置資料庫
-        $path = Storage::disk('local')->put('public/banner', $request->banner_img);
+        //上傳檔案並產生路徑(laravel內建作法)
+        // $path = Storage::disk('local')->put('public/banner', $request->banner_img);
         // dd($path);  //圖片路徑
-        $path = str_replace("public", "storage", $path); //將路徑中的public置換成storage
-
+        // $path = str_replace("public", "storage", $path); //將路徑中的public置換成storage
+        //上傳檔案並產生路徑(FileController作法)
+        $path = FilesController::imgUpload($request->banner_img,'banner');
         Banner::create([
-            'img_path' => '/' . $path,
+            'img_path' => $path,
             'img_opacity' => $request->img_opacity,
             'weight' => $request->weight,
         ]);
@@ -61,16 +64,21 @@ class BannerController extends Controller
         if($request->hasFile('banner_img')){
 
             //使用者上傳的資料，先經過處理(Ex:檔案上傳/防呆...)後
-            $path = Storage::disk('local')->put('public/banner', $request->banner_img);
+            //(laravel內建作法)
+            // $path = Storage::disk('local')->put('public/banner', $request->banner_img);
             // dd($path);  //圖片路徑
-            $path = str_replace("public", "storage", $path); //將路徑中的public置換成storage
+            // $path = str_replace("public", "storage", $path); //將路徑中的public置換成storage
 
-            //將舊有資料檔案刪除
-            $target = str_replace("/storage","public",$banner->img_path); //將路徑中的storage恢復成public
-            Storage::disk('local')->delete($target); //刪除舊圖片
+            $path = FilesController::imgUpload($request->banner_img,'banner');
+
+            //將舊有資料檔案刪除(laravel內建作法)
+            // $target = str_replace("/storage","public",$banner->img_path); //將路徑中的storage恢復成public
+            // Storage::disk('local')->delete($target); //刪除舊圖片
+
+            FilesController::deleteUpload($banner->img_path);
 
             //將新的資料更新到資料庫裡面
-            $banner->img_path= '/' . $path; //更新
+            $banner->img_path= $path; //更新
         }
         $banner->img_opacity= $request->img_opacity;//更新
         $banner->weight= $request->weight;//更新
@@ -86,8 +94,9 @@ class BannerController extends Controller
         // dd($id);
         //使用id找到要刪除的資料，並且連同相關檔案一起刪除
         $banner = Banner::find($id); //找到要刪掉的東西
-        $target = str_replace("/storage","public",$banner->img_path);//將路徑中的storage恢復成public
-        Storage::disk('local')->delete($target);//刪除舊圖片
+        // $target = str_replace("/storage","public",$banner->img_path);//將路徑中的storage恢復成public
+        // Storage::disk('local')->delete($target);//刪除舊圖片
+        FilesController::deleteUpload($banner->img_psth);
         $banner->delete(); //刪除資料庫
 
         return redirect('/banner');//重新導向(送出新的request)到列表頁

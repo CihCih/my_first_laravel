@@ -9,14 +9,14 @@
     {{-- datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <style>
-        main .banner{
+        main .product{
             padding: 3% 15%;
         }
     </style>
 @endsection
 
 @section('main')
-    <div class="banner .container-fluid">
+    <div class="product .container-fluid">
         <div class="list-detail">
             <div id="section1" class="container-xxl">
                 <!-- 留言板標題 -->
@@ -26,7 +26,7 @@
             </div>
             <div id="section2">
                 <div class="content">
-                    <form class="d-flex flex-column" action="" method="post" enctype="multipart/form-data"> {{-- 需跟route對應 --}}
+                    <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data"> {{-- 需跟route對應 --}}
                         @csrf
                         <label for="product_img">商品圖片上傳</label>
                         <input type="file" name="product_img" id="product_img">
@@ -44,7 +44,7 @@
                         <input type="text" name="introduce" id="introduce">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href=''">取消</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/product'">取消</button>
                             <button class="btn btn-primary" type="submit">新增商品</button>
                         </div>
                     </form>
@@ -62,7 +62,7 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#banner_list').DataTable();
+            $('#product_list').DataTable();
         });
     </script>
 @endsection

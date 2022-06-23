@@ -24,16 +24,13 @@
             <!-- 相關超連結 -->
             <ul class="nav justify-content-end align-content-center ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                    <a class="nav-link" href="/product">商品管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
+                    <a class="nav-link" href="/banner">Banner管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/comment">留言板管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>

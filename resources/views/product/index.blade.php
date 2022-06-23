@@ -9,7 +9,7 @@
     {{-- datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <style>
-        main .banner{
+        main .product{
             padding: 3% 15%;
         }
 
@@ -17,7 +17,7 @@
             float: left;
         }
 
-        .create-banner{
+        .create-product{
             float: right;
         }
 
@@ -28,15 +28,15 @@
 @endsection
 
 @section('main')
-    <div class="banner .container-fluid">
+    <div class="product .container-fluid">
         <div class="list-detail">
             <div id="section1" class="container-xxl">
                 <!-- 留言板標題 -->
                 <div class="shop-car">
                     <h3>商品管理</h3>
-                    <a href="/banner/create" class="btn btn-success create-banner">新增商品</a>
+                    <a href="/product/create" class="btn btn-success create-product">新增商品</a>
                 </div>
-                <table id="banner_list" class="display">
+                <table id="product_list" class="display">
                     <thead>
                         <tr>
                             <th>商品圖片</th>
@@ -48,18 +48,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $banners as $banner )
+                        @foreach ( $products as $product )
                         <tr>
                             <td class="img-column">
-                                <img src="" alt="" class="w-100">
+                                <img src="{{$product->img_path}}" alt="" class="w-100">
                             </td>
-                            <td>NIKE AIR FORCE</td>
-                            <td>6399</td>
-                            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
+                            <td>{{$product->product_name}}</td>
+                            <td>{{$product->price}}</td>
+                            <td>{{$product->quantity}}</td>
+                            <td>{{$product->introduce}}</td>
                             <td>
-                                <button class="btn btn-success" onclick="location.href=''">編輯</button>
-                                <button class="btn btn-danger" onclick="document.querySelector('#deleteForm').submit()">刪除</button>
-                                <form action="" method="post" hidden id="deleteForm'">
+                                <button class="btn btn-success" onclick="location.href='/product/edit{{$product->id}}'">編輯</button>
+                                <button class="btn btn-danger" onclick="document.querySelector('#deleteForm{{$product->id}}').submit()">刪除</button>
+                                <form action="/product/delete{{$product->id}}" method="post" hidden id="deleteForm{{$product->id}}">
                                     @csrf
                                 </form>
                             </td>
@@ -80,10 +81,10 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#banner_list').DataTable();
+            $('#product_list').DataTable();
         });
 
-        // function delete_banner($id) {
+        // function delete_product($id) {
         //     document.querySelector('#deleteForm'+$id).submit();
         // }
     </script>

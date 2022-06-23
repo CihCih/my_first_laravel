@@ -31,28 +31,28 @@
             </div>
             <div id="section2">
                 <div class="content">
-                    <form class="d-flex flex-column" action="" method="post" enctype="multipart/form-data">
+                    <form class="d-flex flex-column" action="/product/update{{$product->id}}" method="post" enctype="multipart/form-data">
                         {{-- 需跟route對應 --}}
                         @csrf
                         <span>現在的圖片</span>
-                        <img class="picture" src="" alt="">
+                        <img class="picture" src="{{$product->img_path}}" alt="">
                         <label for="product_img">商品圖片上傳</label>
                         <input type="file" name="product_img" id="product_img">
 
                         <label for="product_name">商品名稱</label>
-                        <input type="text" name="product_name" id="product_name" value="">
+                        <input type="text" name="product_name" id="product_name" value="{{$product->product_name}}">
 
                         <label for="price">商品價格</label>
-                        <input type="number" name="price" id="price" value="">
+                        <input type="number" name="price" id="price" value="{{$product->price}}">
 
                         <label for="quantity">商品數量</label>
-                        <input type="number" name="quantity" id="quantity">
+                        <input type="number" name="quantity" id="quantity" value="{{$product->quantity}}">
 
                         <label for="introduce">商品介紹</label>
-                        <input type="text" name="introduce" id="introduce" value="">
+                        <input type="text" name="introduce" id="introduce" value="{{$product->introduce}}">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href=''">取消</button>
+                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/product'">取消</button>
                             <button class="btn btn-primary" type="submit">編輯商品</button>
                         </div>
                     </form>

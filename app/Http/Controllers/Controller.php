@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Product;
+
 
 class Controller extends BaseController
 {
@@ -23,7 +25,13 @@ class Controller extends BaseController
 
         // dd($data1,$newses,$data3);
 
-        return view('index', compact('newses'));
+        $product_box1 = Product::orderBy('id', 'desc')->take(4)->get();
+        $product_box2 = Product::orderBy('id', 'desc')->skip(4)->take(4)->get();
+
+        $products = Product::inRandomOrder()->first();
+
+
+        return view('index', compact('newses','product_box1','product_box2','products'));
     }
 
     public function comment() //這段comment功能的目的是為了抓取資料庫所有的留言回傳給頁面

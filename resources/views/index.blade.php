@@ -53,7 +53,6 @@
             justify-content: center;
             align-items: center;
         }
-
     </style>
 @endsection
 
@@ -116,17 +115,17 @@
                         @foreach ($newses as $news)
                             <div class="card text-center ">
                                 @if ($news->img == '' || $news->img == null)
-                                {{-- 取得標題的字首,中文的話要加mb_和'utf-8' --}}
+                                    {{-- 取得標題的字首,中文的話要加mb_和'utf-8' --}}
                                     <div class="no-img">{{ mb_substr($news->title, 0, 1, 'utf-8') }}</div>
                                 @else
                                     <img src="{{ $news->img }}" class="card-img-top" alt="img-here">
                                 @endif
-                                    <div class="card-body ">
-                                        <h5 class="card-title">{{ $news->title }}</h5>
-                                        <p class="card-text">{{ $news->content }}</p>
-                                        <span class="card-text"><small class="text-muted">Learn
-                                                More</small></span><i class="fa-solid fa-arrow-right"></i>
-                                    </div>
+                                <div class="card-body ">
+                                    <h5 class="card-title">{{ $news->title }}</h5>
+                                    <p class="card-text">{{ $news->content }}</p>
+                                    <span class="card-text"><small class="text-muted">Learn
+                                            More</small></span><i class="fa-solid fa-arrow-right"></i>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -369,7 +368,7 @@
     <div id="section7" class="big-goods-photo flex-column container-xxl flex-md-row">
         <!-- 左方照片 -->
         <div class="bgph-left col-12 col-md-6 h-auto">
-            <img src="{{ asset('img/homepage-img/section7-img.jpg') }}" alt="" class="h-100">
+            <img src="{{ $products->img_path }}" alt="" class="h-100">
         </div>
         <!-- 右方文字說明及下定按鈕 -->
         <div class="bgph-right col-12 col-md-6 pt-4 pb-4 pe-0 ps-5">
@@ -377,32 +376,32 @@
             <h3>The Catcher in the Rye</h3>
             <div class="score-box d-flex">
                 <div class="score">
-                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                         <path
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                         </path>
                     </svg>
-                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                         <path
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                         </path>
                     </svg>
-                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                         <path
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                         </path>
                     </svg>
-                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <svg fill="#6366f1" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                         <path
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                         </path>
                     </svg>
-                    <svg fill="none" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <svg fill="none" stroke="#6366f1" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                         <path
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                         </path>
@@ -410,11 +409,7 @@
                 </div>
                 <div class="review">4 Reviews</div>
             </div>
-            <div class="content">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha
-                taximy chia
-                microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry
-                +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts
-                keytar banjo tattooed umami cardigan.</div>
+            <div class="content">{{ $products->introduce }}</div>
             <div class="selection-box d-flex">
                 <div class="color-selection">Color</div>
                 <div class="button-select">
@@ -431,7 +426,7 @@
             </div>
             <div class="big-goods-button d-flex">
                 <div class="price-box">
-                    <div class="price">$58.00</div>
+                    <div class="price">{{ $products->price }}</div>
                 </div>
                 <div class="button-box">
                     <div class="price-button d-flex">
@@ -445,72 +440,28 @@
     <!-- 小商品陳列照 -->
     <div id="section8" class="little-goods-photo d-flex">
         <div class="box1 d-flex">
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p1.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
+            @foreach ($product_box1 as $item)
+                <div class="card">
+                    <img src="{{ $item->img_path }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3>CATEGORY</h3>
+                        <h2>Neptune</h2>
+                        <p class="card-text">{{ $item->price }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p2.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p3.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p4.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="box2 d-flex">
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p5.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
+            @foreach ($product_box2 as $item)
+                <div class="card">
+                    <img src="{{ $item->img_path }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3>CATEGORY</h3>
+                        <h2>Neptune</h2>
+                        <p class="card-text">{{ $item->price }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p6.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p7.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('img/homepage-img/section8-p8.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>CATEGORY</h3>
-                    <h2>Neptune</h2>
-                    <p class="card-text">$21.00</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- 地圖與回饋 -->
@@ -531,11 +482,10 @@
                 <form class="was-validated">
                     <div class="mb-3">
                         <label for="validationTextarea" class="form-label">Textarea</label>
-                        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea"
-                            required></textarea>
+                        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
                         <!-- <div class="invalid-feedback">
-                                                Please enter a message in the textarea.
-                                            </div> -->
+                                                            Please enter a message in the textarea.
+                                                        </div> -->
                     </div>
                 </form>
             </div>

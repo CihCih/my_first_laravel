@@ -709,8 +709,8 @@ main .little-goods-photo {
   }
 }
 main .little-goods-photo .box1 {
-  width: 50%;
-  flex-wrap: wrap;
+  width: 100%;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
 }
 @media (max-width: 1024px) {
@@ -744,8 +744,8 @@ main .little-goods-photo .box1 .card .card-body {
   padding: 0;
 }
 main .little-goods-photo .box2 {
-  width: 50%;
-  flex-wrap: wrap;
+  width: 100%;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
 }
 @media (max-width: 1024px) {

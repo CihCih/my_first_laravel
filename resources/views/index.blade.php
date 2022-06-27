@@ -368,7 +368,7 @@
     <div id="section7" class="big-goods-photo flex-column container-xxl flex-md-row">
         <!-- 左方照片 -->
         <div class="bgph-left col-12 col-md-6 h-auto">
-            <img src="{{ $products->img_path }}" alt="" class="h-100">
+            <img src="{{ $products->img_path ??''}}" alt="" class="h-100">
         </div>
         <!-- 右方文字說明及下定按鈕 -->
         <div class="bgph-right col-12 col-md-6 pt-4 pb-4 pe-0 ps-5">
@@ -409,7 +409,7 @@
                 </div>
                 <div class="review">4 Reviews</div>
             </div>
-            <div class="content">{{ $products->introduce }}</div>
+            <div class="content">{{ $products->introduce ??''}}</div>
             <div class="selection-box d-flex">
                 <div class="color-selection">Color</div>
                 <div class="button-select">
@@ -426,7 +426,7 @@
             </div>
             <div class="big-goods-button d-flex">
                 <div class="price-box">
-                    <div class="price">{{ $products->price }}</div>
+                    <div class="price">{{ $products->price ??''}}</div>
                 </div>
                 <div class="button-box">
                     <div class="price-button d-flex">
@@ -442,11 +442,11 @@
         <div class="box1 d-flex">
             @foreach ($product_box1 as $item)
                 <div class="card">
-                    <img src="{{ $item->img_path }}" class="card-img-top" alt="...">
+                    <img src="{{ $item->img_path}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h3>CATEGORY</h3>
                         <h2>Neptune</h2>
-                        <p class="card-text">{{ $item->price }}</p>
+                        <p class="card-text">{{ $item->price}}</p>
                     </div>
                 </div>
             @endforeach

@@ -28,8 +28,11 @@
                 <div class="content">
                     <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data"> {{-- 需跟route對應 --}}
                         @csrf
-                        <label for="product_img">商品圖片上傳</label>
-                        <input type="file" name="product_img" id="product_img">
+                        <label for="product_img">商品主要圖片上傳</label>
+                        <input type="file" name="product_img" id="product_img" accept="image/*">
+
+                        <label for="second_img">商品次要圖片上傳</label>
+                        <input type="file" name="second_img[]" id="second_img" multiple accept="image/*">
 
                         <label for="product_name">商品名稱</label>
                         <input type="text" name="product_name" id="product_name">

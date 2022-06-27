@@ -34,10 +34,19 @@
                     <form class="d-flex flex-column" action="/product/update{{$product->id}}" method="post" enctype="multipart/form-data">
                         {{-- 需跟route對應 --}}
                         @csrf
-                        <span>現在的圖片</span>
+                        <span>目前的主要圖片</span>
                         <img class="picture" src="{{$product->img_path}}" alt="">
-                        <label for="product_img">商品圖片上傳</label>
+                        <label for="product_img">商品主要圖片上傳</label>
                         <input type="file" name="product_img" id="product_img">
+
+                        <span>目前的次要圖片</span>
+                        <div class="d-flex flex-wrap">
+                            @foreach ( $product->imgs as $item)
+                                <img src="{{$item->img_path}}" alt="" style="width:250px;" class="me-3">
+                            @endforeach
+                        </div>
+                        <label for="second_img">商品次要圖片上傳</label>
+                        <input type="file" name="second_img[]" id="second_img" multiple accept="image/*">
 
                         <label for="product_name">商品名稱</label>
                         <input type="text" name="product_name" id="product_name" value="{{$product->product_name}}">

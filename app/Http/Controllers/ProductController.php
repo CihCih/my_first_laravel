@@ -80,6 +80,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        // 找出所有要被刪掉的商品的次要圖片
+        $imgs = Product_img::where('product_id',$id);
+        dd($imgs);
         FilesController::deleteUpload($product->img_path);
         $product->delete();
 

@@ -31,40 +31,53 @@
             </div>
             <div id="section2">
                 <div class="content">
-                    <form class="d-flex flex-column" action="/product/update{{$product->id}}" method="post" enctype="multipart/form-data">
+                    <form class="d-flex flex-column" action="/product/update{{ $product->id }}" method="post"
+                        enctype="multipart/form-data">
                         {{-- 需跟route對應 --}}
                         @csrf
                         <span>目前的主要圖片</span>
-                        <img class="picture" src="{{$product->img_path}}" alt="">
+                        <img class="picture" src="{{ $product->img_path }}" alt="">
                         <label for="product_img">商品主要圖片上傳</label>
                         <input type="file" name="product_img" id="product_img">
 
                         <span>目前的次要圖片</span>
                         <div class="d-flex flex-wrap">
-                            @foreach ( $product->imgs as $item)
-                                <img src="{{$item->img_path}}" alt="" style="width:250px;" class="me-3">
+                            @foreach ($product->imgs as $item)
+                                <div class="d-flex flex-column me-3" style="width:150px;">
+                                    <img src="{{ $item->img_path }}" alt="" class="w-100">
+                                    <button class="btn btn-danger w-100"
+                                        onclick="document.querySelector('#deleteForm{{$product->id}}')">刪除照片</button>
+                                </div>
                             @endforeach
                         </div>
                         <label for="second_img">商品次要圖片上傳</label>
                         <input type="file" name="second_img[]" id="second_img" multiple accept="image/*">
 
                         <label for="product_name">商品名稱</label>
-                        <input type="text" name="product_name" id="product_name" value="{{$product->product_name}}">
+                        <input type="text" name="product_name" id="product_name" value="{{ $product->product_name }}">
 
                         <label for="price">商品價格</label>
-                        <input type="number" name="price" id="price" value="{{$product->price}}">
+                        <input type="number" name="price" id="price" value="{{ $product->price }}">
 
                         <label for="quantity">商品數量</label>
-                        <input type="number" name="quantity" id="quantity" value="{{$product->quantity}}">
+                        <input type="number" name="quantity" id="quantity" value="{{ $product->quantity }}">
 
                         <label for="introduce">商品介紹</label>
-                        <input type="text" name="introduce" id="introduce" value="{{$product->introduce}}">
+                        <input type="text" name="introduce" id="introduce" value="{{ $product->introduce }}">
 
                         <div class="button-box d-flex justify-content-center mt-2">
-                            <button class="btn btn-secondary me-3" type="reset" onclick="location.href='/product'">取消</button>
+                            <button class="btn btn-secondary me-3" type="reset"
+                                onclick="location.href='/product'">取消</button>
                             <button class="btn btn-primary" type="submit">編輯商品</button>
                         </div>
                     </form>
+                    @foreach ($product->imgs as $item)
+                        <form action="/product/delete_img{{ $item->id }}" method="post"
+                            id="deleteForm{{ $item->id }}">
+                            @method('DELETE')
+                            @csrf
+                        </form>
+                    @endforeach
                 </div>
             </div>
         </div>

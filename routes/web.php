@@ -92,5 +92,6 @@ Route::prefix('/product')->group(function (){  //Product管理相關路由
 
     Route::post('/delete{id}', [ProductController::class, 'destroy']); //刪除 =Delete
 
+    Route::post('/delete_img{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片 (接收商品次要圖片id) =Delete
 });
 

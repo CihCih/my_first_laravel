@@ -90,8 +90,9 @@ Route::prefix('/product')->group(function (){  //Product管理相關路由
     Route::get('/edit{id}', [ProductController::class, 'edit']); //編輯頁 =Update
     Route::post('/update{id}', [ProductController::class, 'update']); //更新 =Update
 
-    Route::post('/delete{id}', [ProductController::class, 'destroy']); //刪除 =Delete
+    Route::delete('/delete{id}', [ProductController::class, 'destroy']); //刪除 =Delete
 
-    Route::post('/delete_img{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片 (接收商品次要圖片id) =Delete
+    Route::delete('/delete_img{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片 (接收次要商品圖片id) =Delete
+
 });
 

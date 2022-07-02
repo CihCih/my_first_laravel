@@ -61,6 +61,7 @@
                                 <button class="btn btn-success" onclick="location.href='/product/edit{{$product->id}}'">編輯</button>
                                 <button class="btn btn-danger" onclick="document.querySelector('#deleteForm{{$product->id}}').submit()">刪除</button>
                                 <form action="/product/delete{{$product->id}}" method="post" hidden id="deleteForm{{$product->id}}">
+                                    @method('DELETE')
                                     @csrf
                                 </form>
                             </td>

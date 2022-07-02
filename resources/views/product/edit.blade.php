@@ -36,7 +36,7 @@
                         {{-- 需跟route對應 --}}
                         @csrf
                         <span>目前的主要圖片</span>
-                        <img class="picture" src="{{ $product->img_path }}" alt="">
+                        <img class="picture" src="{{ $product->img_path}}" alt="">
                         <label for="product_img">商品主要圖片上傳</label>
                         <input type="file" name="product_img" id="product_img">
 
@@ -44,9 +44,9 @@
                         <div class="d-flex flex-wrap">
                             @foreach ($product->imgs as $item)
                                 <div class="d-flex flex-column me-3" style="width:150px;">
-                                    <img src="{{ $item->img_path }}" alt="" class="w-100">
+                                    <img src="{{ $item->img_path}}" alt="" class="w-100">
                                     <button class="btn btn-danger w-100"
-                                        onclick="document.querySelector('#deleteForm{{$product->id}}')">刪除照片</button>
+                                        type="button" onclick="document.querySelector('#deleteForm{{ $item->id }}').submit();">刪除圖片</button>
                                 </div>
                             @endforeach
                         </div>
@@ -72,7 +72,7 @@
                         </div>
                     </form>
                     @foreach ($product->imgs as $item)
-                        <form action="/product/delete_img{{ $item->id }}" method="post"
+                        <form action="/product/delete_img{{ $item->id }}" method="post" hidden
                             id="deleteForm{{ $item->id }}">
                             @method('DELETE')
                             @csrf

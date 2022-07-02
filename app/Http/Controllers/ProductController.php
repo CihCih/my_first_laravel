@@ -80,10 +80,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        // 找出所有要被刪掉的商品的次要圖片
-        $imgs = Product_img::where('product_id',$id);
-        // 次要圖片可能會有很多筆，利用foreach去刪除資料
-        foreach($imgs as $key => $value){
+        // 找出所有 要被刪掉的商品 的次要圖片
+        $imgs = Product_img::where('product_id',$id)->get();
+        // 次要圖片可能會有多筆, 利用foreach迴圈去刪除資料
+        foreach ($imgs as $key => $value) {
             FilesController::deleteUpload($value->img_path);
             $value->delete();
         }
@@ -96,12 +96,13 @@ class ProductController extends Controller
 
     public function delete_img($img_id)
     {
-        // 藉由id去找到要刪除的次要圖片
+        //藉由id去找到要刪除的次要圖片
         $img = Product_img::find($img_id);
         FilesController::deleteUpload($img->img_path);
-        // 資料刪除前，先將商品id取出，稍後頁面導引需要用到
-        $product_id = $img->$product_id;
+        //資料刪除前，先將商品id取出，稍後頁面導引需要用到
+        $product_id = $img->product_id;
         $img->delete();
+
 
         return redirect('/product/edit'.$product_id);
     }

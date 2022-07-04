@@ -38,12 +38,14 @@ class ProductController extends Controller
         ]);
 
         // 次要圖片上傳 多圖片上傳
-        foreach ($request->second_img as $index => $element) {
-            $path = FilesController::imgUpload($element, 'product');
-            Product_img::create([
-                'img_path' => $path,
-                'product_id' =>$product->id,
-            ]);
+        if($request->hasFile('second_img')){
+            foreach ($request->second_img as $index => $element) {
+                $path = FilesController::imgUpload($element, 'product');
+                Product_img::create([
+                    'img_path' => $path,
+                    'product_id' =>$product->id,
+                ]);
+            }
         }
 
         return redirect('/product');
@@ -61,10 +63,22 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
+        //更換主要圖片
         if($request->hasFile('product_img')){
             $path = FilesController::imgUpload($request->product_img, 'product');
             FilesController::deleteUpload($request->product_img);
             $product->img_path = $path;
+        }
+
+        //次要圖片處理
+        if($request->hasFile('second_img')){
+            foreach ($request->second_img as $index => $element) {
+                $path = FilesController::imgUpload($element, 'product');
+                Product_img::create([
+                    'img_path' => $path,
+                    'product_id' =>$product->id,
+                ]);
+            }
         }
 
         $product->product_name = $request->product_name;

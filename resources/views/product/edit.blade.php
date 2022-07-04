@@ -5,9 +5,9 @@
 @endsection
 
 @section('css')
+    <meta name="_token" content="{{csrf_token()}}">
     <link rel="stylesheet" href="{{ asset('css/comment.css') }}">
-    {{-- datatable --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
     <style>
         main .banner {
             padding: 3% 15%;
@@ -43,10 +43,9 @@
                         <span>目前的次要圖片</span>
                         <div class="d-flex flex-wrap">
                             @foreach ($product->imgs as $item)
-                                <div class="d-flex flex-column me-3" style="width:150px;">
+                                <div class="d-flex flex-column me-3" style="width:150px;" id="sup_img{{$item->id}}">
                                     <img src="{{ $item->img_path}}" alt="" class="w-100">
-                                    <button class="btn btn-danger w-100"
-                                        type="button" onclick="document.querySelector('#deleteForm{{ $item->id }}').submit();">刪除圖片</button>
+                                    <button class="btn btn-danger w-100" type="button" onclick="delete_img({{$item->id}})">刪除圖片</button>
                                 </div>
                             @endforeach
                         </div>
@@ -71,13 +70,14 @@
                             <button class="btn btn-primary" type="submit">編輯商品</button>
                         </div>
                     </form>
-                    @foreach ($product->imgs as $item)
+                    {{-- @foreach ($product->imgs as $item)
                         <form action="/product/delete_img{{ $item->id }}" method="post" hidden
                             id="deleteForm{{ $item->id }}">
                             @method('DELETE')
                             @csrf
                         </form>
-                    @endforeach
+                    @endforeach --}}
+
                 </div>
             </div>
         </div>
@@ -85,14 +85,20 @@
 @endsection
 
 @section('js')
-    {{-- jquery cdn --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    {{-- datatable cdn --}}
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#banner_list').DataTable();
-        });
-    </script>
+ <script>
+    function delete_img(id){
+        //準備表單以及內部資料
+        let formData = new FormData();
+        formData.append('_method', 'DELETE');
+        formData.append('_token', '{{csrf_token()}}');
+        //將準備好的表單送回後台
+        fetch("/product/delete_img"+id, {
+            method: "POST",
+            body: formData
+        });.then(function(response){
+            document.querySelector('#sup_img'+id).style.display = 'none';
+        //     //成功從資料庫刪除資料後，將自己的HTML刪除
+        })
+    }
+ </script>
 @endsection

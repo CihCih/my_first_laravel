@@ -95,9 +95,10 @@
         fetch("/product/delete_img"+id, {
             method: "POST",
             body: formData
-        });.then(function(response){
-            document.querySelector('#sup_img'+id).style.display = 'none';
-        //     //成功從資料庫刪除資料後，將自己的HTML刪除
+        }).then(function(response){
+            //成功從資料庫刪除資料後，將自己的HTML刪除
+            let element = document.querySelector('#sup_img'+id)
+            element.parentNode.removeChild(element);
         })
     }
  </script>

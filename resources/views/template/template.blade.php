@@ -36,7 +36,7 @@
                     <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="user-icon nav-link "  href="#">
+                    <a class="user-icon nav-link "  href="/login">
                         <i  class=" fa-solid fa-circle-user"></i>
                     </a>
                     <div class="login-remind ">

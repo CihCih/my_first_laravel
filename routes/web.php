@@ -20,11 +20,6 @@ use App\Http\Controllers\ProductController;
 */
 Route::get('/', [Controller::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
 
 
 
@@ -53,10 +48,6 @@ Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
 Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
 Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
 
-<<<<<<< HEAD
-=======
-Route::get('/login', [Controller::class, 'login']);
->>>>>>> parent of ca802a5 (會員系統)
 
 // BANNER管理相關頁面    手工建立版本(遵照resful API的規定)
 // Route::get('/banner', [BannerController::class, 'index']); //總表，列表頁
@@ -106,11 +97,3 @@ Route::prefix('/product')->group(function (){  //Product管理相關路由
 
 });
 
-<<<<<<< HEAD
-
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
->>>>>>> parent of ca802a5 (會員系統)

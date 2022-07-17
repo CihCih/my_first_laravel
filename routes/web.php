@@ -7,7 +7,6 @@ use App\Http\Controllers\ShoppingCarController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +17,19 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [Controller::class, 'index']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 
+// Route::get('/', [Controller::class, 'index']);
 
 
 Route::get('/comment', [Controller::class, 'comment']);
@@ -75,7 +84,6 @@ Route::prefix('/banner')->group(function (){  //BANNER管理相關路由
     Route::post('/update{id}', [BannerController::class, 'update']); //更新 =Update
 
     Route::post('/delete{id}', [BannerController::class, 'delete']); //刪除 =Delete
-
 });
 
 
@@ -96,4 +104,3 @@ Route::prefix('/product')->group(function (){  //Product管理相關路由
     Route::delete('/delete_img{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片 (接收次要商品圖片id) =Delete
 
 });
-

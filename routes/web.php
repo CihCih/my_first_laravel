@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-// Route::get('/', [Controller::class, 'index']);
+Route::get('/', [Controller::class, 'index']);
 
 
 Route::get('/comment', [Controller::class, 'comment']);

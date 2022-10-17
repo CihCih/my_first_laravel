@@ -23,14 +23,14 @@
             <div class="logo"><img src="{{asset('img/homepage-img/logo--u5T7hu.svg')}}" alt=""></div>
             <!-- 相關超連結 -->
             <ul class="nav justify-content-end align-content-center ">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="/product">商品管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/banner">Banner管理</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/comment">留言板管理</a>
+                    <a class="nav-link" href="/comment">留言板</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>

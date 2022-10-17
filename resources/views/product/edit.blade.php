@@ -1,10 +1,13 @@
-@extends('template.template')
+@extends('layouts.app')
 
 @section('pageTitle')
     商品管理-編輯頁
 @endsection
 
 @section('css')
+{{-- bootstrap --}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="stylesheet" href="{{ asset('css/comment.css') }}">
 
@@ -23,12 +26,12 @@
 @section('main')
     <div class="banner .container-fluid">
         <div class="list-detail">
-            <div id="section1" class="container-xxl">
+            {{-- <div id="section1" class="container-xxl">
                 <!-- 留言板標題 -->
                 <div class="shop-car">
                     <h3>商品管理-編輯頁</h3>
                 </div>
-            </div>
+            </div> --}}
             <div id="section2">
                 <div class="content">
                     <form class="d-flex flex-column" action="/product/update{{ $product->id }}" method="post"

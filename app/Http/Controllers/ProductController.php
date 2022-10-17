@@ -11,14 +11,19 @@ class ProductController extends Controller
 {
 
     public function index()
-    {
-        $products = Product::get();
-        return view('product.index',compact('products'));
+    {   $products = Product::get();
+
+        $header = '商品管理';
+        $slot = '';
+
+        return view('product.index',compact('products','header','slot'));
     }
 
     public function create()
     {
-        return view('product.create');
+        $header = '商品管理-新增頁';
+        $slot = '';
+        return view('product.create',compact('header','slot'));
     }
 
 
@@ -56,8 +61,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         // dd($product);
+        $header = '商品管理-編輯頁';
+        $slot = '';
 
-        return view('/product.edit',compact('product'));
+        return view('/product.edit',compact('product','header','slot'));
     }
 
     public function update(Request $request, $id)

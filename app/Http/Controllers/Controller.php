@@ -42,7 +42,10 @@ class Controller extends BaseController
         $comments = Comment::orderby('id', 'desc')->get(); //使用model抓資料
         // dd($comments);
 
-        return view('comment.comment', compact('comments'));
+        $header = '留言管理';
+        $slot = '';
+
+        return view('comment.comment', compact('comments','header','slot'));
     }
 
     public function save_comment(Request $request)
@@ -83,7 +86,10 @@ class Controller extends BaseController
        $comment =  Comment::find($id); //直接去找match的ID
        //   dd($comment);
 
-        return view('comment.edit',compact('comment'));
+       $header = '留言管理-編輯';
+       $slot = '';
+
+        return view('comment.edit',compact('comment','header','slot'));
     }
     public function update_comment($id, Request $request){
         // dd($id, $request->all());

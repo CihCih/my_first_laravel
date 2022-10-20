@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template.template')
 
 @section('pageTitle')
     留言板

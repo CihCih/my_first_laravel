@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('template.template')
 
 @section('pageTitle')
     留言板
 @endsection
 
 @section('css')
-{{-- bootstrap --}}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {{-- bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/comment.css') }}">
 @endsection
 
@@ -29,24 +29,28 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
                             <div class="article-top">
                                 <div class="article-top-left">
                                     {{-- <div class="article-title"></div> --}}
-                                    <h2 class="title-box">{{$comment->title}}</h2>
+                                    <h2 class="title-box">{{ $comment->title }}</h2>
                                     {{-- <div class="article-author"></div> --}}
-                                    <div class="name-box">{{$comment->name}}</div>
+                                    <div class="name-box">{{ $comment->name }}</div>
                                 </div>
                                 <div class="article-top-right">
                                     {{-- <div class="article-time">發文時間：</div> --}}
-                                    <div class="time-box">{{substr($comment->created_at,5,2).'月'.substr($comment->created_at,8,2).'日' }}</div>
+                                    <div class="time-box">
+                                        {{ substr($comment->created_at, 5, 2) . '月' . substr($comment->created_at, 8, 2) . '日' }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="article-bot">
                                 <div class="article-content">
-                                    {{$comment->context}}
+                                    {{ $comment->context }}
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <a href="/comment/delete/{{$comment->id}}">刪除</a>
-                            <a href="/comment/edit/{{$comment->id}}">編輯</a>
+                            @auth
+                                <a href="/comment/delete/{{ $comment->id }}">刪除</a>
+                                <a href="/comment/edit/{{ $comment->id }}">編輯</a>
+                            @endauth
                         </div>
                     </div>
                 </div>

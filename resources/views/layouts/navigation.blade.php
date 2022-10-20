@@ -26,11 +26,6 @@
                         {{ __('banner管理') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="'/comment'" :active="request()->is('comment*')">
-                        {{ __('留言管理') }}
-                    </x-nav-link>
-                </div>
             </div>
 
             <!-- Settings Dropdown -->

@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','power'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -73,7 +73,8 @@ Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
 
 
 // 部分參考resful API個人習慣的寫法
-Route::prefix('/banner')->group(function (){  //BANNER管理相關路由
+//後台
+Route::prefix('/banner')->middleware(['auth'])->group(function (){  //BANNER管理相關路由
 
     Route::get('/', [BannerController::class, 'index']); //總表，列表頁 =Read
 
@@ -86,10 +87,7 @@ Route::prefix('/banner')->group(function (){  //BANNER管理相關路由
     Route::post('/delete{id}', [BannerController::class, 'delete']); //刪除 =Delete
 });
 
-
-
-
-Route::prefix('/product')->group(function (){  //Product管理相關路由
+Route::prefix('/product')->middleware(['auth'])->group(function (){  //Product管理相關路由
 
     Route::get('/', [ProductController::class, 'index']); //總表，列表頁 =Read
 

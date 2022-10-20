@@ -148,7 +148,6 @@ main .banner .list-detail #section1 h3 {
   font-weight: bold;
 }
 main .banner .list-detail #section2{
-    border-bottom: 3px solid gray;
     margin-bottom: 20px;
 }
 main .banner .list-detail #section2 .content {
@@ -168,7 +167,6 @@ main .banner .list-detail #section2 .content .article-box .article-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid aquamarine;
   margin-bottom: 10px;
 }
 main .banner .list-detail #section2 .content .article-box .article-top .article-top-left {
@@ -217,14 +215,13 @@ main .banner .list-detail #section2 .content .article-box .article-top .article-
 /* } */
 main .banner .list-detail #section2 .content .article-box .article-bot {
   width: 100%;
-  border-bottom: 1px solid aquamarine;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   margin-bottom: 15px;
 }
 main .banner .list-detail #section2 .content .article-box .article-bot .article-content {
-  width: 890px;
-  /* height: 100px; */
   background-color: white;
-  /* border: 3px solid aquamarine; */
+  margin: 5px;
 }
 main .banner .list-detail #section3 .content {
   background-color: white;

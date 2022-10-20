@@ -20,7 +20,7 @@
     <nav>
         <!-- logo -->
         <div class="container-xxl d-flex justify-content-lg-between ">
-            <div class="logo"><img src="{{asset('img/homepage-img/logo--u5T7hu.svg')}}" alt=""></div>
+            <div class="logo"><img src="{{ asset('img/homepage-img/logo--u5T7hu.svg') }}" alt=""></div>
             <!-- 相關超連結 -->
             <ul class="nav justify-content-end align-content-center ">
                 {{-- <li class="nav-item">
@@ -35,14 +35,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="user-icon nav-link "  href="/login">
-                        <i  class=" fa-solid fa-circle-user"></i>
-                    </a>
-                    <div class="login-remind ">
-                        <P>Login</P>
-                    </div>
-                </li>
+                @auth
+                    <li class="nav-item" style="display: flex;align-items: center;
+                    margin-bottom: 5px;">
+                        <span>{{ Auth::user()->name }}，您好</span>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('登出') }}
+                            </a>
+                        </form>
+                    </li>
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="user-icon nav-link " href="/login">
+                            <i class=" fa-solid fa-circle-user"></i>登入
+                        </a>
+                    </li>
+                @endguest
             </ul>
             <!-- 漢堡連結 -->
             <div class="burger-link ">
@@ -87,7 +100,7 @@
         <div class="other-info1 d-flex align-items-center">
             <div class="l-box">
                 <div class="logo">
-                    <img src="{{asset('img/homepage-img/little.logo.png')}}" alt="little logo" />
+                    <img src="{{ asset('img/homepage-img/little.logo.png') }}" alt="little logo" />
                     <span>數位方塊</span>
                 </div>
                 <div class="info">
@@ -138,10 +151,10 @@
             <div class="container d-flex align-items-center justify-content-between">
                 <p>© 2020 Tailblocks — @善良的人</p>
                 <div class="svg">
-                    <img src="{{asset('img/some-svg/facebook.svg')}}" alt="">
-                    <img src="{{asset('img/some-svg/twitter.svg')}}" alt="">
-                    <img src="{{asset('img/some-svg/instagram.svg')}}" alt="">
-                    <img src="{{asset('img/some-svg/linkedin.svg')}}" alt="">
+                    <img src="{{ asset('img/some-svg/facebook.svg') }}" alt="">
+                    <img src="{{ asset('img/some-svg/twitter.svg') }}" alt="">
+                    <img src="{{ asset('img/some-svg/instagram.svg') }}" alt="">
+                    <img src="{{ asset('img/some-svg/linkedin.svg') }}" alt="">
                 </div>
             </div>
         </div>

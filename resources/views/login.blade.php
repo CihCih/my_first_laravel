@@ -62,6 +62,7 @@
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} style="width: 15px;hight:15px">
                                 <label for="remember">記住我</label>
                                 <a href="" class="ms-5">Forgot your password?</a>
+                                <a href="/register" class="ms-5">註冊</a>
                             </div>
                             <button type="submit" class="btn btn-primary">SIGN IN</button>
 

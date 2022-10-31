@@ -16,12 +16,19 @@ class AccountPower
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->name == 'Chris') {
+        // if (Auth::user()->name == 'Chris') {
+        //     return $next($request);
+        // }else {
+        //     return redirect('/');
+        // }
+
+
+        // 改用身份組判斷 => 1.管理者 2.一般客戶
+        if (Auth::user()->power == 1) {
             return $next($request);
         }else {
             return redirect('/');
         }
-
     }
 }
 

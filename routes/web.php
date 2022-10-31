@@ -6,6 +6,7 @@ use App\Http\Controllers\NEWSController;
 use App\Http\Controllers\ShoppingCarController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +75,7 @@ Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
 
 // 部分參考resful API個人習慣的寫法
 //後台
-Route::prefix('/banner')->middleware(['auth'])->group(function (){  //BANNER管理相關路由
+Route::prefix('/banner')->middleware(['auth','power'])->group(function (){  //BANNER管理相關路由
 
     Route::get('/', [BannerController::class, 'index']); //總表，列表頁 =Read
 
@@ -87,7 +88,7 @@ Route::prefix('/banner')->middleware(['auth'])->group(function (){  //BANNER管�
     Route::post('/delete{id}', [BannerController::class, 'delete']); //刪除 =Delete
 });
 
-Route::prefix('/product')->middleware(['auth'])->group(function (){  //Product管理相關路由
+Route::prefix('/product')->middleware(['auth','power'])->group(function (){  //Product管理相關路由
 
     Route::get('/', [ProductController::class, 'index']); //總表，列表頁 =Read
 
@@ -100,5 +101,19 @@ Route::prefix('/product')->middleware(['auth'])->group(function (){  //Product�
     Route::post('/delete{id}', [ProductController::class, 'destroy']); //刪除 =Delete
 
     Route::delete('/delete_img{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片 (接收次要商品圖片id) =Delete
+
+});
+
+Route::prefix('/account')->middleware(['auth','power'])->group(function (){  //Account管理相關路由
+
+    Route::get('/', [AccountController::class, 'index']); //總表，列表頁 =Read
+
+    Route::get('/create', [AccountController::class, 'create']); //新增頁 =Create
+    Route::post('/store', [AccountController::class, 'store']); //儲存 =Create
+
+    Route::get('/edit{id}', [AccountController::class, 'edit']); //編輯頁 =Update
+    Route::post('/update{id}', [AccountController::class, 'update']); //更新 =Update
+
+    Route::post('/delete{id}', [AccountController::class, 'destroy']); //刪除 =Delete
 
 });

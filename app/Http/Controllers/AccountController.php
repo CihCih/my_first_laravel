@@ -32,11 +32,18 @@ class AccountController extends Controller
     {
         // dd($request->all());
         // Laravel內建帳號註冊的防呆，檢查輸入是否錯誤
-        $validator = Validator::make($request->all(), [
+        $request = validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // 改寫成直接呼叫一個驗證器去幫我們驗證帳號
+        // $validator = Validator::make($request->all(), [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
 
         if ($validator->fails()) {
             return redirect('/account/create')->with('problem','輸入資訊錯誤請重新檢查');

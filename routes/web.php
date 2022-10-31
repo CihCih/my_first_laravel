@@ -40,6 +40,9 @@ Route::get('/comment/delete/{target}', [Controller::class, 'delete_comment']);
 Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
 Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 
+Route::get('/product-inside', [Controller::class, 'product-inside']);
+
+
 
 // Route::get('/test', function () {
 //     return view('welcome');

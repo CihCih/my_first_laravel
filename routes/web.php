@@ -40,7 +40,10 @@ Route::get('/comment/delete/{target}', [Controller::class, 'delete_comment']);
 Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
 Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 
-Route::get('/product-inside', [Controller::class, 'product-inside']);
+Route::get('/product_detail/{id}', [Controller::class, 'product_detail']);
+
+Route::post('/add_to_cart', [Controller::class, 'add_cart']);
+
 
 
 

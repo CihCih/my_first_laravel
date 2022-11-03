@@ -26,11 +26,12 @@ class Product_img extends Model
     protected $fillable = ['img_path', 'product_id', 'created_at', 'updated_at'];
 
 
-
+    // 每一張商品圖片
     public function product(){
         //  hasOne / hasMany 格式 (對照的Mdel::class,'對方的欄位','自己的欄位')
         // $this->hasOne(Product::class,'id','Product_id');
 
+        // 必定'屬於'某一個商品
         //  belongsTo / belongsToMany 格式 (對照的Mdel::class,'自己的欄位','對方的欄位')
         $this->belongsTo(Product::class,'Product_id','id');
 

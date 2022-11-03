@@ -7,77 +7,80 @@
 main section {
   padding: 150px;
 }
-main section .container {
+main section .contain {
   width: 100%;
   padding: 100px;
   border: 3px solid gray;
   display: flex;
   justify-content: space-between;
 }
-main section .container .left {
+main section .contain .left {
   width: 45%;
 }
-main section .container .left .main-img {
+main section .contain .left .main-img {
   width: 100%;
   height: 350px;
   background-color: lightgrey;
   margin-bottom: 50px;
 }
-main section .container .left .imgs {
+main section .contain .left .main-img img{
+    width: 100%;
+}
+main section .contain .left .imgs {
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
-main section .container .left .imgs .img {
+main section .contain .left .imgs .img {
   background-color: gray;
   width: 130px;
   height: 75px;
 }
-main section .container .left .imgs .img img {
+main section .contain .left .imgs .img img {
   width: 100%;
 }
-main section .container .right {
+main section .contain .right {
   width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-main section .container .right .title {
+main section .contain .right .title {
   font-size: 36px;
   font-weight: bold;
 }
-main section .container .right .info {
+main section .contain .right .info {
   width: 100%;
   font-size: 24px;
 }
-main section .container .right .bottom {
+main section .contain .right .bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 24px;
 }
-main section .container .right .bottom .quantity {
+main section .contain .right .bottom .quantity {
   display: flex;
   align-items: center;
 }
-main section .container .right .bottom .quantity #qty {
+main section .contain .right .bottom .quantity #qty {
   width: 40px;
   height: 30px;
 }
-main section .container .right .bottom .quantity .bi {
+main section .contain .right .bottom .quantity .bi {
   cursor: pointer;
 }
-main section .container .right .btn {
+main section .contain .right .btn {
   display: flex;
   justify-content: space-between;
 }
-main section .container .right .btn button {
+main section .contain .right .btn button {
   border: unset;
   font-size: 24px;
   padding: 5px;
   border-radius: 5px;
 }
-main section .container .right .btn .add button {
+main section .contain .right .btn .add button {
   background-color: rgb(0, 102, 255);
   color: #FFF;
 }/*# sourceMappingURL=product.css.map */

@@ -104,4 +104,13 @@ class Controller extends BaseController
         return redirect('/comment'); //重新導向 與view不同
 
     }
+
+    public function product_detail($id){
+        $product = Product::find($id);
+        return view('product-inside',compact('product'));
+    }
+
+    public function add_cart(Request $request){
+        dd($request->all());
+    }
 }

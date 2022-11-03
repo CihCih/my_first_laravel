@@ -441,26 +441,26 @@
     <div id="section8" class="little-goods-photo d-flex">
         <div class="box1 d-flex">
             @foreach ($product_box1 as $item)
-                <div class="card">
+                <a href="/product_detail/{{$item->id}}" class="card">
                     <img src="{{ $item->img_path}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h3>CATEGORY</h3>
-                        <h2>Neptune</h2>
+                        <h2>{{ $item->product_name}}</h2>
                         <p class="card-text">{{ $item->price}}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         <div class="box2 d-flex">
             @foreach ($product_box2 as $item)
-                <div class="card">
+                <a href="/product_detail/{{$item->id}}" class="card">
                     <img src="{{ $item->img_path }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h3>CATEGORY</h3>
                         <h2>Neptune</h2>
                         <p class="card-text">{{ $item->price }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

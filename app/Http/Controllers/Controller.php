@@ -111,6 +111,21 @@ class Controller extends BaseController
     }
 
     public function add_cart(Request $request){
-        dd($request->all());
+
+        $product = Product::find($request->product_id);
+
+        if ($request->add_qty > $product->product_qty) {
+            $result = [
+                'result' => 'error',
+                'message' => '欲購買數量超過庫存，請聯絡賣家'
+            ];
+            return $result;
+        }elseif ($request->add_qty < 1){
+            $result = [
+                'result' => 'error',
+                'message' => '購買數量異常，請重新確認'
+            ];
+            return $result;
+        }
     }
 }

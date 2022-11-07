@@ -25,10 +25,11 @@ main section .contain .left .main-img {
 }
 main section .contain .left .main-img img{
     width: 100%;
+    height: 100%;
 }
 main section .contain .left .imgs {
   width: 100%;
-  display: flex;
+    display: flex;
   justify-content: space-around;
 }
 main section .contain .left .imgs .img {
@@ -38,6 +39,7 @@ main section .contain .left .imgs .img {
 }
 main section .contain .left .imgs .img img {
   width: 100%;
+  height: 100%;
 }
 main section .contain .right {
   width: 45%;

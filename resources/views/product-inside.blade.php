@@ -32,7 +32,7 @@
                     <div class="quantity">
                         <!-- <span>數量</span> -->
                         <i class="bi bi-dash" id="dash"></i>
-                        <input type="number" value="1" id="qty">
+                        <input type="number" value="1" id="qty" max="{{ $product->quantity }}">
                         <i class="bi bi-plus" id="plus"></i>
                     </div>
                     <div class="price">
@@ -67,11 +67,15 @@
         // const product_id = {!! $product->id !!} //方法二
 
         dash.onclick = function() {
-            qty.value = parseInt(qty.value) - 1
+            if (parseInt(qty.value) >= 2) {
+                qty.value = parseInt(qty.value) - 1
+            }
         }
 
         plus.onclick = function() {
-            qty.value = parseInt(qty.value) + 1
+            if (parseInt(qty.value) < {!! $product->quantity !!}) {
+                qty.value = parseInt(qty.value) + 1
+            }
         }
 
         add_product.onclick = function() {
@@ -87,9 +91,17 @@
                 .then(response => response.json())
                 .catch(error => {
                     alert('新增失敗，請在嘗試一次')
+                    return 'error';
                 })
                 .then(response => {
-                    alert('新增成功')
+                    console.log(response.result);
+                    if(response !== 'error'){
+                        if (response.result == 'success') {
+                            alert('新增成功')
+                        }else{
+                            alert('新增失敗:'+ response.message)
+                        }
+                    }
                 });
         }
     </script>

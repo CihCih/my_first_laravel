@@ -25,7 +25,6 @@
                 <!-- </div> -->
             </div>
             <div class="right">
-                <!-- <div class="contain"> -->
                 <div class="title">{{ $product->product_name }}</div>
                 <div class="info">{{ $product->introduce }}</div>
                 <div class="bottom">
@@ -51,12 +50,10 @@
                         <button type="button" id="add_product">加入購物車</button>
                     </div>
                 </div>
-                <!-- </div> -->
             </div>
         </div>
     </section>
 @endsection
-
 
 @section('js')
     <script>

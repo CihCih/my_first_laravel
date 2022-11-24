@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Product;
+use App\Models\ShoppingCart;
+use Illuminate\Support\Facades\Auth;
 
 
 class Controller extends BaseController
@@ -113,8 +115,8 @@ class Controller extends BaseController
     public function add_cart(Request $request){
 
         $product = Product::find($request->product_id);
-
-        if ($request->add_qty > $product->product_qty) {
+        // 檢查輸入的購買數量合不合理
+        if ($request->add_qty > $product->quantity) {
             $result = [
                 'result' => 'error',
                 'message' => '欲購買數量超過庫存，請聯絡賣家'
@@ -127,5 +129,25 @@ class Controller extends BaseController
             ];
             return $result;
         }
+
+        // 檢查是否有登入
+        // dd(Auth::check()); ->false
+        if (!Auth::check()) {
+            $result = [
+                'result' => 'error',
+                'message' => '尚未登入，請先登入'
+            ];
+            return $result;
+        }
+
+        ShoppingCart::create([
+            'product_id' => $request->product_id,
+            'user_id' => Auth::user()->id,
+            'qty' => $request->add_qty,
+        ]);
+        $result = [
+            'result' => 'success',
+        ];
+        return $result;
     }
 }

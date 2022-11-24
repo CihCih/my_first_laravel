@@ -130,7 +130,7 @@ class Controller extends BaseController
             return $result;
         }
 
-        // 檢查是否有登入
+        // 檢查是否有登入   !Auth::check()因為有加上!反轉判斷結果，所以現在沒有登入->true
         // dd(Auth::check()); ->false
         if (!Auth::check()) {
             $result = [

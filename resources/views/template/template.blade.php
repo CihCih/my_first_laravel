@@ -33,7 +33,7 @@
                     <a class="nav-link" href="/comment">留言板</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="nav-link shopping-cart" href="/shopping1"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
                 @auth
                     <li class="nav-item" style="display: flex;align-items: center;
@@ -163,6 +163,8 @@
     <script src="https://kit.fontawesome.com/1b22cb82e7.js" crossorigin="anonymous"></script>
     {{-- 各頁面專屬JS --}}
     @yield('js')
+
+    
 </body>
 
 </html>

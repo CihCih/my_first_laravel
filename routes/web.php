@@ -59,10 +59,12 @@ Route::post('/add_to_cart', [Controller::class, 'add_cart']);
 Route::get('/microsoft', [NEWSController::class, 'index']);
 
 // bootstrap
-Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
-Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
-Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
-Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
+Route::middleware(['auth'])->group(function (){
+    Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
+    Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
+    Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
+    Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
+});
 
 
 // BANNER管理相關頁面    手工建立版本(遵照resful API的規定)

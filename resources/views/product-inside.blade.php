@@ -64,6 +64,7 @@
         // const product_id = {!! $product->id !!} //方法二
 
         dash.onclick = function() {
+            // 用parseInt將字串轉換為數字
             if (parseInt(qty.value) >= 2) {
                 qty.value = parseInt(qty.value) - 1
             }
@@ -76,17 +77,20 @@
         }
 
         add_product.onclick = function() {
-            var formData = new FormData();
-            formData.append('add_qty', parseInt(qty.value));
-            formData.append('product_id', {!! $product->id !!});
-            formData.append('_token', '{!! csrf_token() !!}');
+            // 在JS建立一個虛擬的form表單
+            var formData = new FormData(); //form表單
 
-            fetch('/add_to_cart', {
-                    method: 'POST', //因為post，所以要寫token
-                    body: formData
+            formData.append('add_qty', parseInt(qty.value)); //input
+            formData.append('product_id', {!! $product->id !!}); //input
+            formData.append('_token', '{!! csrf_token() !!}'); //input
+
+            // 利用fetch將form
+            fetch('/add_to_cart', { //fetch後面寫網址
+                    method: 'POST', //方法   //因為post，所以要寫token
+                    body: formData  //表單
                 })
                 .then(response => response.json())
-                .catch(error => {
+                .catch(error => {  //這邊只會發現四百或五百系列報錯
                     alert('新增失敗，請在嘗試一次')
                     return 'error';
                 })

@@ -20,7 +20,13 @@ class ShoppingCarController extends Controller
         };
         return view('shopping.checkedout1',compact('products','subtotal'));
     }
-    public function step02(){
+    public function step02(Request $request){
+
+        // session的使用方法，使用 鍵與值的方式將想帶到下一頁的資料寫進去
+        session([
+            // key and value;(鍵 與 值)
+            'amount' => $request->qty,
+        ]);
         return view('shopping.checkedout2');
     }
     public function step03(){

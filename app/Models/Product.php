@@ -32,13 +32,13 @@ class Product extends Model
     public function imgs(){
 
         // 可以有很多張商品資料
-        //  hasOne / hasMany 格式 (對照的Mdel::class,'對方的欄位','自己的欄位')
-        return $this->hasMany(Product_img::class,'Product_id','id');  // 因為是hasMany，所以使用的時候會輸出陣列
+        //  hasOne / hasMany 格式 (對照的Model::class,'對方的欄位','自己的欄位')
+        return $this->hasMany(Product_img::class,'product_id','id');  // 因為是hasMany，所以使用的時候會輸出陣列
     }
 
     public function shoppingCart(){
 
         // 可以存在於很多個購物明細中
-        return $this->hasMany(ShoppingCart::class,'Product_id','id');
+        return $this->hasMany(ShoppingCart::class,'product_id','id');
     }
 }

@@ -11,8 +11,8 @@
 
 @section('main')
     <div class="banner .container-fluid">
-            <div class="list-detail">
-
+            <form  action="/shopping2" method="post" class="list-detail">
+                @csrf
                 <!-- 上方進度條 -->
                 <div id="section1" class="container-xxl">
                     <!-- 購物車標題 -->
@@ -92,7 +92,7 @@
                                 <!-- 商品數量與商品價格 -->
                                 <div class="quantity">
                                     <i class="bi bi-dash" id="dash"></i>
-                                    <input type="text" placeholder="1" value="{{$product->qty}}">
+                                    <input  name="qty[]" type="number" value="{{$product->qty}}">
                                     <i class="bi bi-plus" id="plus"></i>
                                 </div>
                                 <div class="sum-price"> ${{$product->product->price * $product->qty}}</div>
@@ -131,11 +131,10 @@
                     <div class="button-box d-flex justify-content-between">
                         <div class="l-button"><a class="btn btn-primary" href="#" role="button"><i
                                     class="fa-solid fa-arrow-left"></i>返回購物</a>
-
                         </div>
-                        <div class="r-button"><a class="btn btn-primary" href="#" role="button">下一步</a></div>
+                        <div class="r-button"><button type="submit" class="btn btn-primary">下一步</button></div>
                     </div>
                 </div>
-            </div>
+            </form>
 @endsection
 

@@ -61,9 +61,9 @@ Route::get('/microsoft', [NEWSController::class, 'index']);
 // bootstrap
 Route::middleware(['auth'])->group(function (){
     Route::get('/shopping1', [ShoppingCarController::class, 'step01']);
-    Route::get('/shopping2', [ShoppingCarController::class, 'step02']);
-    Route::get('/shopping3', [ShoppingCarController::class, 'step03']);
-    Route::get('/shopping4', [ShoppingCarController::class, 'step04']);
+    Route::post('/shopping2', [ShoppingCarController::class, 'step02']);
+    Route::post('/shopping3', [ShoppingCarController::class, 'step03']);
+    Route::post('/shopping4', [ShoppingCarController::class, 'step04']);
 });
 
 

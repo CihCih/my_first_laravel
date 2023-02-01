@@ -31,6 +31,11 @@
                         {{ __('新增管理者') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="'/order'" :active="request()->is('order*')">
+                        {{ __('訂單管理') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

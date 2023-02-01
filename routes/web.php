@@ -7,6 +7,7 @@ use App\Http\Controllers\ShoppingCarController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,5 +124,19 @@ Route::prefix('/account')->middleware(['auth','power'])->group(function (){  //A
     Route::post('/update{id}', [AccountController::class, 'update']); //更新 =Update
 
     Route::post('/delete{id}', [AccountController::class, 'destroy']); //刪除 =Delete
+
+});
+
+Route::prefix('/order')->middleware(['auth','power'])->group(function (){  //Order管理相關路由
+
+    Route::get('/', [OrderController::class, 'index']); //總表，列表頁 =Read
+
+    Route::get('/create', [OrderController::class, 'create']); //新增頁 =Create
+    Route::post('/store', [OrderController::class, 'store']); //儲存 =Create
+
+    Route::get('/edit{id}', [OrderController::class, 'edit']); //編輯頁 =Update
+    Route::post('/update{id}', [OrderController::class, 'update']); //更新 =Update
+
+    Route::post('/delete{id}', [OrderController::class, 'destroy']); //刪除 =Delete
 
 });

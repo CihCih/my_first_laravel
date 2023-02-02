@@ -29,7 +29,10 @@ class ShoppingCarController extends Controller
         ]);
         return view('shopping.checkedout2');
     }
-    public function step03(){
+    public function step03(Request $request){
+
+
+        dd($request->all());
         return view('shopping.checkedout3');
     }
     public function step04(){

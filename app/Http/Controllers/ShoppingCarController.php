@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\ShoppingCart;
 
@@ -31,11 +32,29 @@ class ShoppingCarController extends Controller
     }
     public function step03(Request $request){
 
-
-        dd($request->all());
+        session([
+            // key and value;(鍵 與 值)
+            'pay' => $request->pay,
+            'deliver' => $request->deliver,
+        ]);
         return view('shopping.checkedout3');
     }
-    public function step04(){
+    public function step04(Request $request){
+        Order::create([
+            // 'user_id'=>
+            // 'subtotal'=>
+            // 'shipping_fee'=>
+            // 'total'=>
+            // 'product_qty'=>
+            'pay_way'=> session()->get('pay'),
+            'shipping_way'=> session()->get('deliver'),
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            // 'add'=> $request->code.$request->city.$request->address,
+        ]);
+        // dump(session()->all());
+        dd($request);
         return view('shopping.checkedout4');
     }
 }
